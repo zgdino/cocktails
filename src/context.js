@@ -21,7 +21,7 @@ const AppProvider = ({ children }) => {
     </AppContext.Provider>
   )
 }
-// make sure use
+// make sure use apps
 export const useGlobalContext = () => {
   return useContext(AppContext)
 }
