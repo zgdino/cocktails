@@ -14,11 +14,22 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(`${url}${searchTerm}`)
       const data = await response.json()
-      const {drinks} = data
+      const { drinks } = data
       if (drinks) {
-
-      }
-      else {
+        // ajdusting reference naming
+        const newCocktails = drinks.map((item) => {
+          const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } =
+            item
+          return {
+            id: idDrink,
+            name: strDrink,
+            image: strDrinkThumb,
+            info: strAlcoholic,
+            glass: strGlass,
+          }
+        })
+        setCocktails(newCocktails)
+      } else {
         setCocktails([])
       }
       setLoading(false)
